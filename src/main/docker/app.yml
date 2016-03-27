@@ -1,0 +1,15 @@
+version: '2'
+services:
+    perfumeria-app:
+        image: perfumeria
+        external_links:
+            - perfumeria-postgresql:postgresql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/perfumeria
+        ports:
+            - 8080:8080
+    perfumeria-postgresql:
+        extends:
+            file: postgresql.yml
+            service: perfumeria-postgresql

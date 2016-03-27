@@ -1,0 +1,12 @@
+version: '2'
+services:
+    perfumeria-postgresql:
+        container_name: perfumeria-postgresql
+        image: postgres:9.5.1
+        # volumes:
+        #     - ~/volumes/jhipster/perfumeria/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=perfumeria
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
