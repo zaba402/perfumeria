@@ -28,7 +28,7 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 
 @Configuration
-@EnableJpaRepositories("pl.edu.uwm.wmii.repository")
+//@EnableJpaRepositories
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
 @EnableTransactionManagement
 public class DatabaseConfiguration {

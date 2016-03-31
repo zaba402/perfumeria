@@ -1,10 +1,12 @@
-package pl.edu.uwm.wmii.service;
+package pl.edu.uwm.wmii.kadry.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.edu.uwm.wmii.domain.PracownikOB;
-import pl.edu.uwm.wmii.repository.PracownikRepository;
-import pl.edu.uwm.wmii.web.rest.dto.PracownikDTO;
+import org.springframework.transaction.annotation.Transactional;
+import pl.edu.uwm.wmii.kadry.ob.PracownikOB;
+import pl.edu.uwm.wmii.kadry.service.IPracownicyService;
+import pl.edu.uwm.wmii.kadry.repository.IPracownikRepository;
+import pl.edu.uwm.wmii.kadry.dto.PracownikDTO;
 import pl.edu.uwm.wmii.web.rest.util.OrikaBeanMapper;
 
 import java.util.List;
@@ -13,22 +15,26 @@ import java.util.List;
  * Created by wojciech.baczewski on 2016-03-29.
  */
 @Service
-public class PracownicyService {
+@Transactional
+public class PracownicyServiceImpl implements IPracownicyService {
 
     @Autowired
-    private PracownikRepository pracownikRepository;
+    private IPracownikRepository pracownikRepository;
 
     @Autowired
     private OrikaBeanMapper mapper;
 
+    @Override
     public List<PracownikDTO> findAll() {
         return mapper.mapAsList(pracownikRepository.findAll(), PracownikDTO.class);
     }
 
+    @Override
     public void save(PracownikDTO pracownikDTO){
          pracownikRepository.save(mapper.map(pracownikDTO,PracownikOB.class));
     }
 
+    @Override
     public void delete(Long id){
         pracownikRepository.delete(id);
     }

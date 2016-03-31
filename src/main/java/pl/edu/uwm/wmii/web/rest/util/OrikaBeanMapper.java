@@ -3,12 +3,12 @@ package pl.edu.uwm.wmii.web.rest.util;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.ConfigurableMapper;
 import org.springframework.stereotype.Component;
-import pl.edu.uwm.wmii.domain.AdresOB;
-import pl.edu.uwm.wmii.domain.PracownikOB;
-import pl.edu.uwm.wmii.domain.UmowaOB;
-import pl.edu.uwm.wmii.web.rest.dto.AdresDTO;
-import pl.edu.uwm.wmii.web.rest.dto.PracownikDTO;
-import pl.edu.uwm.wmii.web.rest.dto.UmowaDTO;
+import pl.edu.uwm.wmii.kadry.ob.AdresOB;
+import pl.edu.uwm.wmii.kadry.ob.PracownikOB;
+import pl.edu.uwm.wmii.kadry.ob.UmowaOB;
+import pl.edu.uwm.wmii.kadry.dto.AdresDTO;
+import pl.edu.uwm.wmii.kadry.dto.PracownikDTO;
+import pl.edu.uwm.wmii.kadry.dto.UmowaDTO;
 
 /**
  * Created by wojciech.baczewski on 2016-03-29.

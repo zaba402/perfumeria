@@ -1,4 +1,4 @@
-package pl.edu.uwm.wmii.domain;
+package pl.edu.uwm.wmii.kadry.ob;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import pl.edu.uwm.wmii.domain.base.BaseOB;
-import pl.edu.uwm.wmii.domain.enums.EStanowisko;
+import pl.edu.uwm.wmii.kadry.enums.EStanowisko;
 
 import javax.persistence.*;
 
