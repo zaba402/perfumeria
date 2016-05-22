@@ -7,9 +7,12 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import pl.edu.uwm.wmii.domain.base.BaseOB;
+import pl.edu.uwm.wmii.kadry.enums.EPlec;
 import pl.edu.uwm.wmii.kadry.enums.EStanowisko;
 
 import javax.persistence.*;
+import java.time.ZonedDateTime;
+import java.util.List;
 
 /**
  * Created by wojciech.baczewski on 2016-03-29.
@@ -35,5 +38,21 @@ public class PracownikOB extends BaseOB {
     @OneToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="ADRES_ID")
     private AdresOB adres;
+    //    private List<EPrawoJazdy> kategoriePrawaJazdy;
+    private ZonedDateTime dataUrodzenia;
+    private ZonedDateTime dataZatrudnienia;
+    private EPlec plec;
+    private boolean status;
+    private String telPrefix;
+    private String telNumer;
+    @OneToMany(mappedBy = "pracownikOB")
+    private List<UrlopOB> urlop;
+    @OneToMany(mappedBy = "pracownik")
+    private List<UmiejetnoscOB> umiejetnosci;
+    @OneToMany(mappedBy = "prac")
+    private List<SzkolenieOB> szkolenia;
+    private StanowiskoOB stanowisko;
+    private WyksztalcenieOB wyksztalcenie;
+    private PensjaOB pensja;
 
 }
