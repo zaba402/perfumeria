@@ -3,8 +3,8 @@ package pl.edu.uwm.wmii.web.rest.kadry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.uwm.wmii.kadry.service.IPracownicyService;
 import pl.edu.uwm.wmii.kadry.dto.PracownikDTO;
+import pl.edu.uwm.wmii.kadry.service.impl.PracownicyServiceImpl;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/api/kadry")
 public class KadryRestController {
     @Autowired
-    private IPracownicyService pracownicyService;
+    private PracownicyServiceImpl pracownicyService;
 
     @RequestMapping(value = "/pracownicy",
         method = RequestMethod.GET,
