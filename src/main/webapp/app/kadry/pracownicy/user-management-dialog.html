@@ -1,0 +1,97 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserLabel">
+            Dane pracownika</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <!--<div class="form-group">-->
+            <!--<label>ID</label>-->
+            <!--<input type="text" class="form-control" name="id"-->
+                   <!--ng-model="vm.user.id" readonly>-->
+        <!--</div>-->
+
+        <div class="form-group">
+            <label class="control-label">Imie</label>
+            <input type="text" class="form-control" name="imie"
+                   ng-model="vm.user.imie" ng-maxlength="50">
+
+            <div ng-show="editForm.imie.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.imie.$error.required">
+                    This field is required.
+                </p>
+
+                <p class="help-block"
+                   ng-show="editForm.imie.$error.maxlength"
+                  >
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Nazwisko</label>
+            <input type="text" class="form-control" name="nazwisko"
+                   ng-model="vm.user.nazwisko" ng-maxlength="50">
+
+            <div ng-show="editForm.nazwisko.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.nazwisko.$error.maxlength"
+                  >
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Pesel</label>
+            <input type="text" class="form-control" name="pesel"
+                   ng-model="vm.user.pesel" ng-maxlength="11">
+
+            <div ng-show="editForm.pesel.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.pesel.$error.maxlength"
+                  >
+                    This field cannot be longer than 11 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Stanowisko</label>
+            <input type="text" class="form-control" name="stanowisko"
+                   ng-model="vm.user.stanwisko" ng-maxlength="50">
+
+            <div ng-show="editForm.stanowisko.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.stanowisko.$error.maxlength"
+                  >
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Adres</label>
+            <input type="text" class="form-control" name="stanowisko"
+                   ng-model="vm.user.adres" ng-maxlength="80">
+
+            <div ng-show="editForm.adres.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.adres.$error.maxlength"
+                  >
+                    This field cannot be longer than 80 characters.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+           >Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -5,9 +5,9 @@
         .module('perfumeriaApp')
         .controller('UserManagementController', UserManagementController);
 
-    UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', 'paginationConstants'];
+    UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', 'paginationConstants', '$rootScope'];
 
-    function UserManagementController(Principal, User, ParseLinks, paginationConstants) {
+    function UserManagementController(Principal, User, ParseLinks, paginationConstants, $rootScope) {
         var vm = this;
 
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
@@ -15,42 +15,32 @@
         vm.currentAccount = null;
         vm.languages = null;
         vm.links = null;
-        vm.loadAll = loadAll;
         vm.loadPage = loadPage;
         vm.page = 1;
-        vm.setActive = setActive;
         vm.totalItems = null;
-        vm.users = [];
+        if (angular.isUndefined($rootScope.users)) {
+            loadMockUsers();
+        }
 
-
-        vm.loadAll();
-
-        
 
         Principal.identity().then(function(account) {
             vm.currentAccount = account;
         });
 
 
-        function loadAll () {
-            User.query({page: vm.page - 1, size: paginationConstants.itemsPerPage}, function (result, headers) {
-                vm.links = ParseLinks.parse(headers('link'));
-                vm.totalItems = headers('X-Total-Count');
-                vm.users = result;
-            });
+        function loadMockUsers () {
+            $rootScope.users = [{
+                id: 1,
+                imie: "Jan",
+                nazwisko: "Nowak",
+                pesel: "43223443223",
+                stanwisko: 'Administrator',
+                adres: '10-075 Olsztyn, Dworcowa 12a/2'
+            }]
         }
 
         function loadPage (page) {
             vm.page = page;
-            vm.loadAll();
-        }
-
-        function setActive (user, isActivated) {
-            user.activated = isActivated;
-            User.update(user, function () {
-                vm.loadAll();
-                vm.clear();
-            });
         }
 
         function clear () {

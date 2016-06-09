@@ -8,7 +8,7 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('entity', {
+        $stateProvider.state('kadry', {
             abstract: true,
             parent: 'app'
         });

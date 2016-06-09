@@ -5,9 +5,9 @@
         .module('perfumeriaApp')
         .controller('UserManagementDialogController',UserManagementDialogController);
 
-    UserManagementDialogController.$inject = ['$stateParams', '$uibModalInstance', 'entity', 'User'];
+    UserManagementDialogController.$inject = ['$stateParams', '$uibModalInstance', 'entity', '$rootScope'];
 
-    function UserManagementDialogController ($stateParams, $uibModalInstance, entity, User) {
+    function UserManagementDialogController ($stateParams, $uibModalInstance, entity, $rootScope) {
         var vm = this;
 
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
@@ -34,11 +34,20 @@
         function save () {
             vm.isSaving = true;
             if (vm.user.id !== null) {
-                User.update(vm.user, onSaveSuccess, onSaveError);
+                $rootScope.users.forEach(function (user) {
+                    if (user.id === vm.user.id) {
+                        user.imie = vm.user.imie;
+                        user.nazwisko = vm.user.nazwisko;
+                        user.pesel = vm.user.pesel;
+                        user.stanwisko = vm.user.stanwisko;
+                        user.adres = vm.user.adres;
+                    }
+                });
             } else {
-                vm.user.langKey = 'en';
-                User.save(vm.user, onSaveSuccess, onSaveError);
+                vm.user.id = $rootScope.users.length + 1;
+                $rootScope.users.push(vm.user);
             }
+            clear();
         }
     }
 })();
