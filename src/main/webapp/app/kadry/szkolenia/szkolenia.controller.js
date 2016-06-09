@@ -14,27 +14,6 @@
         vm.loadPage = loadPage;
         vm.page = 1;
         vm.totalItems = null;
-        if (angular.isUndefined($rootScope.szkolenia)) {
-            loadMockSzkolenia();
-        }
-
-        function loadMockSzkolenia () {
-            $rootScope.szkolenia = [{
-                id: 1,
-                nazwa: "Szkolenie 1",
-                temat: "O życiu",
-                dataDo: new Date(),
-                dataOd: new Date(),
-                liczbaGodzin: 3
-            }, {
-                id: 2,
-                nazwa: "Szkolenie 2",
-                temat: "O rozpuście",
-                dataDo: new Date(),
-                dataOd: new Date(),
-                liczbaGodzin: 5
-            }];
-        }
 
         function loadPage (page) {
             vm.page = page;

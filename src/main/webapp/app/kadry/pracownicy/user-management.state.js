@@ -22,7 +22,11 @@
                     controller: 'UserManagementController',
                     controllerAs: 'vm'
                 }
-            }
+            }, onEnter: ['$state', '$rootScope', function($state, $rootScope) {
+                if (angular.isUndefined($rootScope.users)) {
+                    $state.go('home', null, { reload: true });
+                }
+            }]
         })
         .state('user-management-detail', {
             parent: 'kadry',
@@ -45,25 +49,27 @@
             data: {
                 authorities: ['ROLE_ADMIN']
             },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/kadry/pracownicy/user-management-dialog.html',
-                    controller: 'UserManagementDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {
-                            return {
-                                id: null, imie: null, nazwisko: null, pesel: null, stanwisko: null, adres: null
-                            };
+            onEnter: ['$stateParams', '$state', '$uibModal', '$rootScope', function($stateParams, $state, $uibModal, $rootScope) {
+                if (angular.isDefined($rootScope.users)) {
+                    $uibModal.open({
+                        templateUrl: 'app/kadry/pracownicy/user-management-dialog.html',
+                        controller: 'UserManagementDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            entity: function () {
+                                return {
+                                    id: null, imie: null, nazwisko: null, pesel: null, stanwisko: null, adres: null
+                                };
+                            }
                         }
-                    }
-                }).result.then(function() {
-                    $state.go('user-management', null, { reload: true });
-                }, function() {
-                    $state.go('user-management');
-                });
+                    }).result.then(function () {
+                        $state.go('user-management', null, {reload: true});
+                    }, function () {
+                        $state.go('user-management');
+                    });
+                }
             }]
         })
         .state('user-management.edit', {

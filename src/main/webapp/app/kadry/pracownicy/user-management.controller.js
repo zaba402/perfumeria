@@ -18,26 +18,11 @@
         vm.loadPage = loadPage;
         vm.page = 1;
         vm.totalItems = null;
-        if (angular.isUndefined($rootScope.users)) {
-            loadMockUsers();
-        }
 
 
         Principal.identity().then(function(account) {
             vm.currentAccount = account;
         });
-
-
-        function loadMockUsers () {
-            $rootScope.users = [{
-                id: 1,
-                imie: "Jan",
-                nazwisko: "Nowak",
-                pesel: "43223443223",
-                stanwisko: 'Administrator',
-                adres: '10-075 Olsztyn, Dworcowa 12a/2'
-            }]
-        }
 
         function loadPage (page) {
             vm.page = page;
