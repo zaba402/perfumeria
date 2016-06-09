@@ -45,10 +45,7 @@
 
         function clear () {
             vm.user = {
-                id: null, login: null, firstName: null, lastName: null, email: null,
-                activated: null, langKey: null, createdBy: null, createdDate: null,
-                lastModifiedBy: null, lastModifiedDate: null, resetDate: null,
-                resetKey: null, authorities: null
+                id: null, imie: null, nazwisko: null, pesel: null, stanwisko: null, adres: null
             };
             vm.editForm.$setPristine();
             vm.editForm.$setUntouched();

@@ -55,10 +55,7 @@
                     resolve: {
                         entity: function () {
                             return {
-                                id: null, login: null, firstName: null, lastName: null, email: null,
-                                activated: true, langKey: null, createdBy: null, createdDate: null,
-                                lastModifiedBy: null, lastModifiedDate: null, resetDate: null,
-                                resetKey: null, authorities: null
+                                id: null, imie: null, nazwisko: null, pesel: null, stanwisko: null, adres: null
                             };
                         }
                     }
@@ -75,56 +72,55 @@
             data: {
                 authorities: ['ROLE_ADMIN']
             },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/kadry/pracownicy/user-management-dialog.html',
-                    controller: 'UserManagementDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: ['$rootScope', function($rootScope) {
-                            if (angular.isDefined($rootScope.users)) {
+            onEnter: ['$stateParams', '$state', '$uibModal', '$rootScope', function($stateParams, $state, $uibModal, $rootScope) {
+                if (angular.isDefined($rootScope.users)) {
+                    $uibModal.open({
+                        templateUrl: 'app/kadry/pracownicy/user-management-dialog.html',
+                        controller: 'UserManagementDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            entity: [function() {
                                 return angular.copy($rootScope.users[$stateParams.index]);
-                            } else {
-                                $state.go('user-management', null, { reload: true });
-                            }
-                            // return User.get({login : $stateParams.login});
-                        }]
-                    }
-                }).result.then(function() {
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('user-management', null, { reload: true });
+                    }, function() {
+                        $state.go('user-management', null, { reload: true });
+                    });
+                } else {
                     $state.go('user-management', null, { reload: true });
-                }, function() {
-                    $state.go('user-management', null, { reload: true });
-                });
+                }
             }]
         })
         .state('user-management.delete', {
             parent: 'user-management',
-            url: '/usun//:index',
+            url: '/usun/:index',
             data: {
                 authorities: ['ROLE_ADMIN']
             },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/kadry/pracownicy/user-management-delete-dialog.html',
-                    controller: 'UserManagementDeleteController',
-                    controllerAs: 'vm',
-                    size: 'md',
-                    resolve: {
-                        entity: ['$rootScope', function($rootScope) {
-                            if (angular.isDefined($rootScope.users)) {
+            onEnter: ['$stateParams', '$state', '$uibModal', '$rootScope', function($stateParams, $state, $uibModal, $rootScope) {
+                if (angular.isDefined($rootScope.users)) {
+                    $uibModal.open({
+                        templateUrl: 'app/kadry/pracownicy/user-management-delete-dialog.html',
+                        controller: 'UserManagementDeleteController',
+                        controllerAs: 'vm',
+                        size: 'md',
+                        resolve: {
+                            entity: [function() {
                                 return $stateParams.index;
-                            } else {
-                                $state.go('user-management', null, { reload: true });
-                            }
-                        }]
-                    }
-                }).result.then(function() {
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('user-management', null, { reload: true });
+                    }, function() {
+                        $state.go('user-management', null, { reload: true });
+                    });
+                } else {
                     $state.go('user-management', null, { reload: true });
-                }, function() {
-                    $state.go('user-management', null, { reload: true });
-                });
+                }
             }]
         });
     }
