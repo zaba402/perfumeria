@@ -343,10 +343,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
         <dependency>
@@ -637,20 +633,6 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibase.version}</version>
-                <configuration>
-                    <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
-                    <diffChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
-                    <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://localhost:5432/perfumeria</url>
-                    <defaultSchemaName></defaultSchemaName>
-                    <username>perfumeria</username>
-                    <password>perfumeria</password>
-                    <referenceUrl>
-                        hibernate:spring:pl.edu.uwm.wmii.domain?dialect=org.hibernate.dialect.PostgreSQLDialect&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
-                    </referenceUrl>
-                    <verbose>true</verbose>
-                    <logging>debug</logging>
-                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -682,11 +664,12 @@
                     <url>jdbc:postgresql://localhost:5432/perfumeria</url>
                     <defaultSchemaName />
                     <username>perfumeria</username>
-                    <password />
-                    <referenceUrl>hibernate:spring:pl.edu.uwm.wmii.domain?dialect=org.hibernate.dialect.PostgreSQL82Dialect&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy</referenceUrl>
+                    <password>perfumeria</password>
+                    <referenceUrl>hibernate:spring:pl.edu.uwm.wmii.domain?dialect=org.hibernate.dialect.PostgreSQLDialect&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>
                 </configuration>
+
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -705,16 +688,6 @@
             <!-- jhipster-needle-maven-add-plugin -->
         </plugins>
     </build>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.19</version>
-            </plugin>
-        </plugins>
-    </reporting>
 
     <profiles>
         <profile>
@@ -821,15 +794,5 @@
             </dependencies>
         </profile>
     </profiles>
-
-    <reporting>
-        <plugins>
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-surefire-report-plugin</artifactId>-->
-            <!--<version>2.19</version>-->
-            <!--</plugin>-->
-        </plugins>
-    </reporting>
 
 </project>
