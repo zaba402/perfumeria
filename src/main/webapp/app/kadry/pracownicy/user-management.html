@@ -25,7 +25,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="user in users track by user.id">
-                <td><a ui-sref="user-management-detail({login:user.login})">{{user.id}}</a></td>
+                <td><a ui-sref="user-management-detail({index:$index})">{{user.id}}</a></td>
                 <td>{{user.imie}}</td>
                 <td>{{user.nazwisko}}</td>
                 <td>{{user.pesel}}</td>
@@ -34,7 +34,7 @@
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                ui-sref="user-management-detail({login:user.login})"
+                                ui-sref="user-management-detail({index:$index})"
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>
                             <span class="hidden-xs hidden-sm"></span>

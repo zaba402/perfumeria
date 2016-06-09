@@ -26,7 +26,7 @@
         })
         .state('user-management-detail', {
             parent: 'kadry',
-            url: '/user/:login',
+            url: '/user/:index',
             data: {
                 authorities: ['ROLE_ADMIN'],
                 pageTitle: 'perfumeria'

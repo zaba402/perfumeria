@@ -1,98 +1,53 @@
 <div>
-    <h2><span>User</span> "{{vm.user.login}}"</h2>
+    <h2><span>{{vm.user.imie}} {{vm.user.nazwisko}}</span></h2>
 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Field</th>
-                    <th>Value</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>Login</span>
+                    <span>Imie</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{vm.user.login}}" readonly>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>FirstName</span>
-                </td>
-                <td>
-                    <input type="text" class="input-sm form-control" value="{{vm.user.firstName}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{vm.user.imie}}" readonly>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>LastName</span>
+                    <span>Nazwisko</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{vm.user.lastName}}" readonly>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Email</span>
-                </td>
-                <td>
-                    <input type="text" class="input-sm form-control" value="{{vm.user.email}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{vm.user.nazwisko}}" readonly>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>Activated</span>
+                    <span>Pesel</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control" value="{{vm.user.activated}}" readonly>
-                </td>
-            </tr>
-            
-            <tr>
-                <td>
-                    <span>CreatedBy</span>
-                </td>
-                <td>
-                    <input type="text" class="input-sm form-control" value="{{vm.user.createdBy}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{vm.user.pesel}}" readonly>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>CreatedDate</span>
+                    <span>Stanowisko</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control"
-                           value="{{vm.user.createdDate | date:'dd/MM/yy HH:mm' }}" readonly>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>LastModifiedBy</span>
-                </td>
-                <td>
-                    <input type="text" class="input-sm form-control" value="{{vm.user.lastModifiedBy}}" readonly>
+                    <input type="text" class="input-sm form-control" value="{{vm.user.stanwisko}}" readonly>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>LastCreatedDate</span>
+                    <span>Adres</span>
                 </td>
                 <td>
-                    <input type="text" class="input-sm form-control"
-                           value="{{vm.user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}" readonly>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Profiles</span>
-                </td>
-                <td>
-                    <ul class="list-unstyled">
-                        <li ng-repeat="authority in user.authorities"><span>{{authority}}</span></li>
-                    </ul>
+                    <input type="text" class="input-sm form-control" value="{{vm.user.adres}}" readonly>
                 </td>
             </tr>
             </tbody>
