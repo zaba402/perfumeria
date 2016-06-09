@@ -58,6 +58,9 @@
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="bower_components/blob-polyfill/Blob.js"></script>
+    <script src="bower_components/file-saver.js/FileSaver.js"></script>
+    <script src="bower_components/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -68,8 +71,10 @@
     <script src="app/account/reset/request/reset.request.controller.js"></script>
     <script src="app/account/reset/finish/reset.finish.state.js"></script>
     <script src="app/account/reset/finish/reset.finish.controller.js"></script>
+    <script src="app/layouts/navbar/navbar.controller.js"></script>
+    <script src="app/layouts/navbar/active-link.directive.js"></script>
+    <script src="app/layouts/error/error.state.js"></script>
     <script src="app/services/user/user.service.js"></script>
-    <script src="app/services/kadry/kadry.service.js"></script>
     <script src="app/services/auth/register.service.js"></script>
     <script src="app/services/auth/principal.service.js"></script>
     <script src="app/services/auth/password.service.js"></script>
@@ -81,16 +86,13 @@
     <script src="app/services/auth/auth.jwt.service.js"></script>
     <script src="app/services/auth/activate.service.js"></script>
     <script src="app/services/auth/account.service.js"></script>
-    <script src="app/layouts/navbar/navbar.controller.js"></script>
-    <script src="app/layouts/navbar/active-link.directive.js"></script>
-    <script src="app/layouts/error/error.state.js"></script>
+    <script src="app/kadry/szkolenia/szkolenia.state.js"></script>
+    <script src="app/kadry/szkolenia/szkolenia.controller.js"></script>
     <script src="app/kadry/pracownicy/user-management.state.js"></script>
     <script src="app/kadry/pracownicy/user-management.controller.js"></script>
     <script src="app/kadry/pracownicy/user-management-dialog.controller.js"></script>
     <script src="app/kadry/pracownicy/user-management-detail.controller.js"></script>
     <script src="app/kadry/pracownicy/user-management-delete-dialog.controller.js"></script>
-    <script src="app/kadry/szkolenia/szkolenia.state.js"></script>
-    <script src="app/kadry/szkolenia/szkolenia.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort.directive.js"></script>
@@ -149,9 +151,9 @@
     <script src="app/account/password/password-strength-bar.directive.js"></script>
     <script src="app/account/activate/activate.state.js"></script>
     <script src="app/account/activate/activate.controller.js"></script>
+    <script src="app/kadry/kadry.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
-    <script src="app/kadry/kadry.state.js"></script>
     <script src="app/admin/admin.state.js"></script>
     <script src="app/account/account.state.js"></script>
     <script src="app/app.state.js"></script>

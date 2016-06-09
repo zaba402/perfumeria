@@ -50,6 +50,27 @@
                     <input type="text" class="input-sm form-control" value="{{vm.user.adres}}" readonly>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span>Dokumenty</span>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td><a href="" ng-click="vm.getPlik('Umowa-o-prace.doc')">Umowa o prace</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="" ng-click="vm.getPlik('Wniosek-o-urlop.doc')">Wniosek o urlop</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="" ng-click="vm.getPlik('Wypowiedzenie-umowy-o-pracę.doc')">Wypowiedzenie umowy o pracę</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="" ng-click="vm.getPlik('Skierowanie-na-badania-lekarskie.doc')">Skierowanie na badania lekarskie</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
